@@ -1,0 +1,2 @@
+# Write your MySQL query statement below
+SELECT ST.student_id, ST.student_name, SB.subject_name, IFNULL(T.attended_exams, 0) AS attended_exams FROM Students AS ST JOIN Subjects AS SB LEFT JOIN (SELECT E.student_id, E.subject_name, COUNT(*) AS attended_exams FROM Examinations AS E GROUP BY E.student_id, E.subject_name) T ON ST.student_id = T.student_id AND SB.subject_name = T.subject_name ORDER BY ST.student_id, SB.subject_name;
